@@ -1,0 +1,696 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Undangan Pernikahan - Justin & Sisca</title>
+
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      /* Reset & General Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Lora", serif;
+        background-color: #faf6f0;
+        color: #4a3e3d;
+        line-height: 1.8;
+        text-align: center;
+        overflow-x: hidden;
+      }
+
+      /* SPLASH GATE (Buka Undangan) */
+      .splash-gate {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: 
+          linear-gradient(to bottom, rgba(250, 246, 240, 0.9), rgba(250, 246, 240, 0.95)),
+          url("https://images.unsplash.com/photo-1507504038482-7621c518d50e?auto=format&fit=crop&w=1000&q=80") no-repeat center center/cover;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+      }
+      .splash-gate.fade-out {
+        transform: translateY(-100%);
+        opacity: 0;
+        pointer-events: none;
+      }
+      .splash-gate h3 {
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+        color: #c97a61;
+        margin-bottom: 15px;
+      }
+      .splash-gate h1 {
+        font-family: "Dancing Script", cursive;
+        font-size: 4.5rem;
+        color: #8c584c;
+        margin-bottom: 25px;
+      }
+      .splash-gate .guest-box {
+        background: #ffffff;
+        padding: 20px 30px;
+        border-radius: 12px;
+        border: 1px dashed #c97a61;
+        margin-bottom: 30px;
+        box-shadow: 0 10px 25px rgba(201, 122, 97, 0.15);
+        max-width: 320px;
+      }
+      .splash-gate .guest-box p {
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        color: #7d706e;
+        margin-bottom: 5px;
+      }
+      .splash-gate .guest-box h4 {
+        font-size: 1.3rem;
+        color: #4a3e3d;
+        font-weight: 600;
+      }
+      .btn-open {
+        background-color: #8c584c;
+        color: #ffffff;
+        border: none;
+        padding: 14px 35px;
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(140, 88, 76, 0.3);
+      }
+      .btn-open:hover {
+        background-color: #c97a61;
+        transform: scale(1.05);
+      }
+
+      /* Hero Cover */
+      .hero {
+        background: 
+          linear-gradient(rgba(250, 246, 240, 0.4), rgba(250, 246, 240, 0.6)),
+          url("https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=1920&q=80") no-repeat center center/cover;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+      .hero h2 {
+        font-family: "Montserrat", sans-serif;
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+        color: #8c584c;
+        margin-bottom: 20px;
+      }
+      .hero h1 {
+        font-family: "Dancing Script", cursive;
+        font-size: 5.5rem;
+        color: #8c584c;
+        text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+      }
+
+      /* Sections General */
+      section {
+        padding: 100px 20px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      h2.section-title {
+        font-family: "Dancing Script", cursive;
+        font-size: 4rem;
+        color: #8c584c;
+        margin-bottom: 10px;
+      }
+      .sub-title {
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        margin-bottom: 50px;
+        color: #c97a61;
+      }
+
+      /* Mempelai Profiles */
+      .mempelai-card {
+        background: #ffffff;
+        border-radius: 15px;
+        padding: 40px 30px;
+        border: 1px solid #f2e6db;
+        box-shadow: 0 10px 30px rgba(140, 88, 76, 0.05);
+        margin-bottom: 30px;
+      }
+      .mempelai-card h3 {
+        font-family: "Dancing Script", cursive;
+        font-size: 2.5rem;
+        color: #8c584c;
+        margin-bottom: 10px;
+      }
+      .mempelai-card p.ig-link {
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.85rem;
+        color: #c97a61;
+        margin-bottom: 15px;
+      }
+
+      /* LOVE STORY SECTION */
+      .story-card {
+        background: #ffffff;
+        border-radius: 15px;
+        padding: 35px;
+        margin-bottom: 25px;
+        border: 1px solid #f2e6db;
+        text-align: left;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+      }
+      .story-card h4 {
+        font-family: "Dancing Script", cursive;
+        font-size: 1.8rem;
+        color: #8c584c;
+        margin-bottom: 10px;
+      }
+
+      /* TIMELINE ACARA - Style Terinspirasi Foto tapi Lebih Mewah */
+      .timeline {
+        position: relative;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px 0;
+        text-align: left;
+      }
+      .timeline::after {
+        content: "";
+        position: absolute;
+        width: 2px;
+        background-color: #c97a61;
+        top: 0;
+        bottom: 0;
+        left: 20px;
+      }
+      @media (min-width: 768px) {
+        .timeline::after {
+          left: 50%;
+          margin-left: -1px;
+        }
+      }
+      .timeline-container {
+        padding: 10px 30px;
+        position: relative;
+        background-color: inherit;
+        width: 100%;
+      }
+      @media (min-width: 768px) {
+        .timeline-container {
+          width: 50%;
+        }
+        .timeline-container-left {
+          left: 0;
+          text-align: right;
+        }
+        .timeline-container-right {
+          left: 50%;
+        }
+      }
+      .timeline-container::after {
+        content: "";
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        right: -17px;
+        background-color: #faf6f0;
+        border: 3px solid #8c584c;
+        top: 15px;
+        border-radius: 50%;
+        z-index: 1;
+        left: 13px;
+      }
+      @media (min-width: 768px) {
+        .timeline-container-left::after {
+          right: -8px;
+          left: auto;
+        }
+        .timeline-container-right::after {
+          left: -8px;
+        }
+      }
+      .timeline-content {
+        padding: 20px;
+        background-color: white;
+        position: relative;
+        border-radius: 8px;
+        border: 1px solid #f2e6db;
+        box-shadow: 0 5px 15px rgba(140, 88, 76, 0.03);
+      }
+      .timeline-content h3 {
+        font-family: "Dancing Script", cursive;
+        font-size: 1.8rem;
+        color: #8c584c;
+        margin-bottom: 5px;
+      }
+      .timeline-content .time {
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #c97a61;
+        margin-bottom: 10px;
+        display: block;
+      }
+
+      /* MAP SECTION */
+      .map-frame {
+        width: 100%;
+        height: 350px;
+        border: none;
+        border-radius: 12px;
+        margin-bottom: 25px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      }
+      .btn-navigasi {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background-color: #8c584c;
+        color: white;
+        text-decoration: none;
+        padding: 12px 30px;
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        border-radius: 30px;
+        transition: all 0.3s;
+      }
+      .btn-navigasi:hover {
+        background-color: #c97a61;
+        transform: translateY(-2px);
+      }
+
+      /* WEDDING GIFT / AMPLOP DIGITAL */
+      .gift-box {
+        background: #ffffff;
+        padding: 35px;
+        border-radius: 15px;
+        border: 1px solid #f2e6db;
+        margin-bottom: 25px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+      }
+      .gift-card {
+        background: #fdfaf7;
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px solid #f2e6db;
+        margin: 15px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .gift-card h5 {
+        font-size: 1.1rem;
+        color: #4a3e3d;
+        margin-bottom: 5px;
+      }
+      .gift-card p {
+        font-family: "Montserrat", sans-serif;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #c97a61;
+        margin-bottom: 12px;
+      }
+      .btn-salin {
+        background-color: #c97a61;
+        color: white;
+        border: none;
+        padding: 8px 18px;
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.75rem;
+        font-weight: 600;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .btn-salin:hover {
+        background-color: #8c584c;
+      }
+
+      /* RSVP & LIVE ucapan */
+      .rsvp-card {
+        background: #ffffff;
+        padding: 40px 30px;
+        border-radius: 15px;
+        border: 1px solid #f2e6db;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+      }
+      .rsvp-card input, .rsvp-card textarea, .rsvp-card select {
+        width: 100%;
+        padding: 12px 15px;
+        border-radius: 8px;
+        border: 1px solid #e8dfd8;
+        font-family: inherit;
+        background-color: #fdfaf7;
+        margin-bottom: 20px;
+        outline: none;
+      }
+      .rsvp-card input:focus, .rsvp-card textarea:focus {
+        border-color: #c97a61;
+      }
+
+      /* GUESTBOOK / WISHES WALL */
+      .wishes-wall {
+        background: #fcf9f5;
+        border-radius: 12px;
+        padding: 25px;
+        max-height: 350px;
+        overflow-y: auto;
+        text-align: left;
+        border: 1px solid #f2e6db;
+        margin-top: 30px;
+      }
+      .wish-item {
+        background: #ffffff;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        border: 1px solid #f2e6db;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.01);
+      }
+      .wish-item strong {
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.9rem;
+        color: #8c584c;
+      }
+      .wish-item .badge {
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.7rem;
+        padding: 3px 8px;
+        border-radius: 12px;
+        margin-left: 8px;
+        font-weight: bold;
+      }
+      .badge-yes { background-color: #e2f0d9; color: #385723; }
+      .badge-no { background-color: #fce4d6; color: #c65911; }
+      .wish-item p {
+        font-size: 1rem;
+        margin-top: 5px;
+        color: #5c504e;
+      }
+
+      /* Audio Control */
+      .music-controller {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 1000;
+      }
+      .music-btn {
+        background-color: #8c584c;
+        color: white;
+        border: none;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #4a3e3d;
+        color: #faf6f0;
+        padding: 50px 20px;
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- Splash Gate Overlay -->
+    <div id="splashGate" class="splash-gate">
+      <h3>The Wedding of</h3>
+      <h1>Justin & Sisca</h1>
+      <div class="guest-box">
+        <p>Kepada Yth. Bapak/Ibu/Saudara/i</p>
+        <h4 id="guestName">Tamu Undangan</h4>
+      </div>
+      <button class="btn-open" onclick="openInvitation()">
+        <i class="fa-solid fa-envelope-open-text"></i> Buka Undangan
+      </button>
+    </div>
+
+    <!-- Floating Audio Control -->
+    <div class="music-controller">
+      <button class="music-btn" id="audioBtn" onclick="toggleAudio()">
+        <i class="fa-solid fa-music" id="musicIcon"></i>
+      </button>
+      <audio id="bgMusic" loop>
+        <source src="La Maritza (Piano Cover) - Sylvie Vartan.mp3" type="audio/mpeg" />
+      </audio>
+    </div>
+
+    <!-- Hero Header -->
+    <header class="hero">
+      <h2>The Wedding Celebration</h2>
+      <h1>Justin & Sisca</h1>
+      <p style="font-family: 'Montserrat', sans-serif; font-size: 0.9rem; letter-spacing: 5px; margin-top: 20px;">12 . 12 . 2026</p>
+    </header>
+
+    <!-- Mempelai Section -->
+    <section id="mempelai">
+      <h2 class="section-title">Mempelai</h2>
+      <p class="sub-title">Dengan mengucap syukur kepada Tuhan YME</p>
+
+      <div class="mempelai-card">
+        <h3>Justin Aditama, S.T.</h3>
+        <p class="ig-link"><i class="fa-brands fa-instagram"></i> @justin.aditama</p>
+        <p>Putra dari Bapak Hardi Aditama & Ibu Elina Aditama</p>
+      </div>
+
+      <div style="font-family: 'Dancing Script', cursive; font-size: 3rem; color: #8c584c; margin: 20px 0;">&</div>
+
+      <div class="mempelai-card">
+        <h3>Sisca Natalia, S.Kom.</h3>
+        <p class="ig-link"><i class="fa-brands fa-instagram"></i> @sisca.natalia</p>
+        <p>Putri dari Bapak Roy Natalia & Ibu Cindy Natalia</p>
+      </div>
+    </section>
+
+    <!-- Love Story Section -->
+    <section id="love-story" style="background-color: #fdfaf7;">
+      <h2 class="section-title">Love Story</h2>
+      <p class="sub-title">Bagaimana Kami Memulai Perjalanan Ini</p>
+
+      <div class="story-card">
+        <h4>Pertama Bertemu (2020)</h4>
+        <p>Kami pertama kali dipertemukan di bangku universitas dalam sebuah projek organisasi kampus. Percakapan pertama yang sederhana lambat laun berbuah menjadi kedekatan emosional.</p>
+      </div>
+      <div class="story-card">
+        <h4>Menjalin Komitmen (2022)</h4>
+        <p>Setelah sekian waktu berbagi cerita, tawa, dan tangis, kami memutuskan untuk saling berkomitmen menjalani hubungan yang lebih dewasa dan serius demi masa depan bersama.</p>
+      </div>
+    </section>
+
+    <!-- Timeline Susunan Acara -->
+    <section id="acara">
+      <h2 class="section-title">Susunan Acara</h2>
+      <p class="sub-title">Hari Bahagia Kami</p>
+
+      <div class="timeline">
+        <div class="timeline-container timeline-container-left">
+          <div class="timeline-content">
+            <span class="time"><i class="fa-regular fa-clock"></i> 08:00 WIB</span>
+            <h3>Persiapan & Doa</h3>
+            <p>Prosesi persiapan keluarga inti dan panitia pelaksana acara.</p>
+          </div>
+        </div>
+        <div class="timeline-container timeline-container-right">
+          <div class="timeline-content">
+            <span class="time"><i class="fa-regular fa-clock"></i> 10:00 WIB</span>
+            <h3>Pemberkatan / Akad</h3>
+            <p>Pengikatan ikatan janji suci pernikahan secara sah di hadapan Tuhan.</p>
+          </div>
+        </div>
+        <div class="timeline-container timeline-container-left">
+          <div class="timeline-content">
+            <span class="time"><i class="fa-regular fa-clock"></i> 11:30 WIB</span>
+            <h3>Resepsi Pernikahan</h3>
+            <p>Perayaan syukuran bersama kerabat, sahabat, serta kolega tercinta.</p>
+          </div>
+        </div>
+        <div class="timeline-container timeline-container-right">
+          <div class="timeline-content">
+            <span class="time"><i class="fa-regular fa-clock"></i> 14:00 WIB</span>
+            <h3>Acara Penutup</h3>
+            <p>Foto bersama dan ramah tamah penghujung perayaan bahagia.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Denah Lokasi -->
+    <section id="lokasi" style="background-color: #fdfaf7;">
+      <h2 class="section-title">Lokasi Acara</h2>
+      <p class="sub-title">Kehadiran Anda adalah kebahagiaan kami</p>
+
+      <iframe 
+        class="map-frame" 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.666466144368!2d106.82496417585802!3d-6.175392393811818!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5d2db242733%3A0x48e42f9e4e68e4c!2sMonumen%20Nasional!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid">
+      </iframe>
+
+      <a href="https://maps.app.goo.gl/uX3f59oE66bSDoF4A" target="_blank" class="btn-navigasi">
+        <i class="fa-solid fa-diamond-turn-right"></i> Petunjuk Rute Navigasi
+      </a>
+    </section>
+
+    <!-- Amplop Digital / Hadiah -->
+    <section id="hadiah">
+      <h2 class="section-title">Kirim Hadiah</h2>
+      <p class="sub-title">Bagi yang ingin mengirimkan ucapan syukur digital</p>
+
+      <div class="gift-box">
+        <div class="gift-card">
+          <h5>Bank Central Asia (BCA)</h5>
+          <p id="rekening1">1234567890</p>
+          <button class="btn-salin" onclick="copyToClipboard('rekening1')">Salin Nomor Rekening</button>
+        </div>
+        <div class="gift-card">
+          <h5>Bank Mandiri</h5>
+          <p id="rekening2">9876543210</p>
+          <button class="btn-salin" onclick="copyToClipboard('rekening2')">Salin Nomor Rekening</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP & LIVE Guestbook Wall -->
+    <section id="rsvp" style="background-color: #fdfaf7;">
+      <h2 class="section-title">Konfirmasi & Ucapan</h2>
+      <p class="sub-title">Kirimkan restu doa terbaik Anda untuk kami</p>
+
+      <div class="rsvp-card">
+        <form id="rsvpForm">
+          <input type="text" id="nameInput" required placeholder="Tulis nama lengkap Anda" />
+          <select id="presenceInput">
+            <option value="Hadir">Saya akan Hadir</option>
+            <option value="Tidak Hadir">Mohon maaf, Tidak Bisa Hadir</option>
+          </select>
+          <textarea id="wishInput" rows="4" required placeholder="Tulis doa restu / ucapan selamat untuk kedua mempelai..."></textarea>
+          <button type="submit" class="btn-open" style="width: 100%;">Kirim Doa Restu</button>
+        </form>
+
+        <!-- Dynamic Wishes Wall (Buku Tamu Real-time) -->
+        <div class="wishes-wall" id="wishesWall">
+          <div class="wish-item">
+            <strong>Budi Prasetyo</strong> <span class="badge badge-yes">Hadir</span>
+            <p>Selamat menempuh hidup baru untuk Justin dan Sisca! Semoga selalu rukun, bahagia selamanya, dan lancar rezeki amin!</p>
+          </div>
+          <div class="wish-item">
+            <strong>Dewi Handayani</strong> <span class="badge badge-no">Tidak Hadir</span>
+            <p>Selamat ya Sisca! Sangat disayangkan saya tidak bisa hadir langsung karena dinas luar kota, tapi doa terbaik selalu menyertai kalian berdua.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>Justin & Sisca</p>
+      <p>&copy; 2026 KedaiKoding. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+      // Ambil nama tamu otomatis dari link URL (?to=Nama+Tamu)
+      const urlParams = new URLSearchParams(window.location.search);
+      const guestName = urlParams.get('to');
+      if (guestName) {
+        document.getElementById('guestName').innerText = guestName;
+      }
+
+      // Membuka Undangan & Menyalakan Musik
+      function openInvitation() {
+        document.getElementById('splashGate').classList.add('fade-out');
+        const audio = document.getElementById("bgMusic");
+        audio.play();
+        document.getElementById("musicIcon").className = "fa-solid fa-compact-disc fa-spin";
+      }
+
+      // Kontrol Musik
+      const audio = document.getElementById("bgMusic");
+      const musicIcon = document.getElementById("musicIcon");
+
+      function toggleAudio() {
+        if (audio.paused) {
+          audio.play();
+          musicIcon.className = "fa-solid fa-compact-disc fa-spin";
+        } else {
+          audio.pause();
+          musicIcon.className = "fa-solid fa-music";
+        }
+      }
+
+      // Salin Rekening ke Clipboard
+      function copyToClipboard(id) {
+        const textToCopy = document.getElementById(id).innerText;
+        navigator.clipboard.writeText(textToCopy).then(() => {
+          alert("Nomor rekening berhasil disalin: " + textToCopy);
+        });
+      }
+
+      // Guestbook Ucapan Real-Time
+      document.getElementById("rsvpForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        
+        const nameInput = document.getElementById("nameInput").value;
+        const presenceInput = document.getElementById("presenceInput").value;
+        const wishInput = document.getElementById("wishInput").value;
+
+        // Buat Template Item Baru
+        const wishWall = document.getElementById("wishesWall");
+        const newItem = document.createElement("div");
+        newItem.classList.add("wish-item");
+
+        const badgeClass = presenceInput === "Hadir" ? "badge-yes" : "badge-no";
+
+        newItem.innerHTML = `
+          <strong>${nameInput}</strong> <span class="badge ${badgeClass}">${presenceInput}</span>
+          <p>${wishInput}</p>
+        `;
+
+        // Taruh di bagian atas dinding ucapan
+        wishWall.insertBefore(newItem, wishWall.firstChild);
+
+        // Reset Formulir
+        document.getElementById("rsvpForm").reset();
+        alert("Terima kasih! Ucapan selamat Anda telah terkirim dan terpajang.");
+      });
+    </script>
+  </body>
+</html>
