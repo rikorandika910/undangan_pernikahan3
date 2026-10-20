@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Undangan Pernikahan - Justin & Sisca</title>
 
-    <!-- Google Fonts & FontAwesome Icons -->
+    <!-- Google Fonts & FontAwesome -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Italianno&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
@@ -16,191 +16,348 @@
     />
 
     <style>
-      /* Reset & General Styles */
+      :root {
+        --sage-dark: #24362d;
+        --sage-deep: #3d584b;
+        --sage-primary: #638875;
+        --sage-light: #94b4a3;
+        --sage-soft: #c8ddd2;
+        --sage-mist: #eaf2ed;
+        --cream-bg: #f7f9f7;
+        --cream-card: #ffffff;
+        --text-primary: #1f2e26;
+        --text-muted: #5e7368;
+        --gold-subtle: #d3b88c;
+        --card-border: rgba(148, 180, 163, 0.35);
+        --card-shadow: 0 15px 40px rgba(61, 88, 75, 0.08);
+      }
+
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        scroll-behavior: smooth;
       }
+
       body {
-        font-family: "Lora", serif;
-        background-color: #faf6f0;
-        color: #4a3e3d;
+        font-family: "Plus Jakarta Sans", sans-serif;
+        background-color: var(--cream-bg);
+        color: var(--text-primary);
         line-height: 1.8;
         text-align: center;
         overflow-x: hidden;
       }
 
-      /* SPLASH GATE (Buka Undangan) */
+      /* ========================================================
+         SPLASH GATE (PEMBUKA BERGAYA FROSTED SAGE)
+         ======================================================== */
       .splash-gate {
         position: fixed;
-        top: 0;
-        left: 0;
+        inset: 0;
         width: 100%;
         height: 100vh;
-        background: 
-          linear-gradient(to bottom, rgba(250, 246, 240, 0.9), rgba(250, 246, 240, 0.95)),
-          url("https://images.unsplash.com/photo-1507504038482-7621c518d50e?auto=format&fit=crop&w=1000&q=80") no-repeat center center/cover;
+        background: radial-gradient(circle at 50% 25%, rgba(61, 88, 75, 0.88), rgba(36, 54, 45, 0.96)),
+          url("https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=80") no-repeat center center/cover;
         z-index: 9999;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding: 20px;
-        transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+        padding: 24px;
+        color: #ffffff;
+        transition: transform 1.1s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
       }
       .splash-gate.fade-out {
         transform: translateY(-100%);
         opacity: 0;
         pointer-events: none;
       }
-      .splash-gate h3 {
-        font-family: "Montserrat", sans-serif;
-        font-size: 0.9rem;
-        text-transform: uppercase;
+      .splash-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 36px;
+        padding: 50px 35px;
+        max-width: 440px;
+        width: 100%;
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+      }
+      .gate-tag {
+        font-size: 0.75rem;
         letter-spacing: 5px;
-        color: #c97a61;
-        margin-bottom: 15px;
+        text-transform: uppercase;
+        color: var(--sage-soft);
+        font-weight: 600;
+        display: block;
+        margin-bottom: 10px;
       }
       .splash-gate h1 {
-        font-family: "Dancing Script", cursive;
-        font-size: 4.5rem;
-        color: #8c584c;
-        margin-bottom: 25px;
-      }
-      .splash-gate .guest-box {
-        background: #ffffff;
-        padding: 20px 30px;
-        border-radius: 12px;
-        border: 1px dashed #c97a61;
-        margin-bottom: 30px;
-        box-shadow: 0 10px 25px rgba(201, 122, 97, 0.15);
-        max-width: 320px;
-      }
-      .splash-gate .guest-box p {
-        font-family: "Montserrat", sans-serif;
-        font-size: 0.8rem;
-        text-transform: uppercase;
-        color: #7d706e;
-        margin-bottom: 5px;
-      }
-      .splash-gate .guest-box h4 {
-        font-size: 1.3rem;
-        color: #4a3e3d;
-        font-weight: 600;
-      }
-      .btn-open {
-        background-color: #8c584c;
+        font-family: "Italianno", cursive;
+        font-size: 5.5rem;
+        font-weight: 400;
+        line-height: 1;
         color: #ffffff;
-        border: none;
-        padding: 14px 35px;
-        font-family: "Montserrat", sans-serif;
-        font-size: 0.85rem;
-        font-weight: 600;
+        margin-bottom: 20px;
+        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      }
+      .guest-box {
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(200, 221, 210, 0.4);
+        padding: 16px 25px;
+        border-radius: 20px;
+        margin-bottom: 30px;
+      }
+      .guest-box p {
+        font-size: 0.75rem;
         letter-spacing: 2px;
         text-transform: uppercase;
-        border-radius: 30px;
+        color: var(--sage-soft);
+        margin-bottom: 4px;
+      }
+      .guest-box h4 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        color: #ffffff;
+        font-weight: 600;
+      }
+      .btn-sage {
+        background: linear-gradient(135deg, var(--sage-soft), #ffffff);
+        color: var(--sage-dark);
+        border: none;
+        padding: 14px 38px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        border-radius: 50px;
         cursor: pointer;
         transition: all 0.3s ease;
-        box-shadow: 0 5px 15px rgba(140, 88, 76, 0.3);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
       }
-      .btn-open:hover {
-        background-color: #c97a61;
-        transform: scale(1.05);
+      .btn-sage:hover {
+        transform: translateY(-3px) scale(1.03);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        background: #ffffff;
       }
 
-      /* Hero Cover */
+      /* ========================================================
+         HERO COVER SECTION
+         ======================================================== */
       .hero {
-        background: 
-          linear-gradient(rgba(250, 246, 240, 0.4), rgba(250, 246, 240, 0.6)),
-          url("https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=1920&q=80") no-repeat center center/cover;
-        height: 100vh;
+        position: relative;
+        min-height: 100vh;
+        background: linear-gradient(180deg, rgba(36, 54, 45, 0.6) 0%, rgba(61, 88, 75, 0.75) 100%),
+          url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1920&q=80") no-repeat center center/cover;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding: 20px;
+        padding: 40px 20px;
+        color: #ffffff;
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        background: linear-gradient(to top, var(--cream-bg), transparent);
       }
       .hero h2 {
-        font-family: "Montserrat", sans-serif;
-        font-size: 1rem;
+        font-size: 0.85rem;
+        letter-spacing: 6px;
         text-transform: uppercase;
-        letter-spacing: 5px;
-        color: #8c584c;
-        margin-bottom: 20px;
+        color: var(--sage-soft);
+        margin-bottom: 10px;
       }
       .hero h1 {
-        font-family: "Dancing Script", cursive;
-        font-size: 5.5rem;
-        color: #8c584c;
-        text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+        font-family: "Italianno", cursive;
+        font-size: 6.5rem;
+        font-weight: 400;
+        color: #ffffff;
+        line-height: 1;
+        margin-bottom: 12px;
+        text-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
+      }
+      .hero-date {
+        font-size: 0.95rem;
+        letter-spacing: 4px;
+        color: #e5f0ea;
+        font-weight: 500;
+        padding: 6px 24px;
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 30px;
+        margin-top: 10px;
       }
 
-      /* Sections General */
+      /* ========================================================
+         ANIMASI CANTIK SETIAP SLIDE (SOFT LIFT + BLUR)
+         ======================================================== */
+      .reveal {
+        opacity: 0;
+        transform: translateY(60px) scale(0.97);
+        filter: blur(6px);
+        transition: 
+          opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+          filter 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: opacity, transform, filter;
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+
+      /* ========================================================
+         SECTION WRAPPER & HEADINGS
+         ======================================================== */
       section {
         padding: 100px 20px;
-        max-width: 800px;
+        max-width: 860px;
         margin: 0 auto;
       }
       h2.section-title {
-        font-family: "Dancing Script", cursive;
-        font-size: 4rem;
-        color: #8c584c;
-        margin-bottom: 10px;
+        font-family: "Italianno", cursive;
+        font-size: 4.8rem;
+        color: var(--sage-deep);
+        margin-bottom: 0px;
+        line-height: 1;
+        font-weight: 400;
       }
       .sub-title {
-        font-family: "Montserrat", sans-serif;
         font-size: 0.8rem;
+        letter-spacing: 4px;
         text-transform: uppercase;
-        letter-spacing: 3px;
-        margin-bottom: 50px;
-        color: #c97a61;
+        color: var(--sage-primary);
+        margin-bottom: 45px;
+        font-weight: 600;
       }
 
-      /* Mempelai Profiles */
+      /* ========================================================
+         MEMPELAI SECTION
+         ======================================================== */
+      .couple-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        align-items: center;
+      }
+      @media (min-width: 768px) {
+        .couple-wrapper {
+          flex-direction: row;
+        }
+      }
       .mempelai-card {
-        background: #ffffff;
-        border-radius: 15px;
-        padding: 40px 30px;
-        border: 1px solid #f2e6db;
-        box-shadow: 0 10px 30px rgba(140, 88, 76, 0.05);
-        margin-bottom: 30px;
+        flex: 1;
+        background: var(--cream-card);
+        border-radius: 30px;
+        padding: 45px 30px;
+        border: 1px solid var(--card-border);
+        box-shadow: var(--card-shadow);
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        position: relative;
+        overflow: hidden;
+      }
+      .mempelai-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: linear-gradient(90deg, var(--sage-light), var(--sage-primary));
+      }
+      .mempelai-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 45px rgba(61, 88, 75, 0.12);
+      }
+      .mempelai-avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: var(--sage-mist);
+        color: var(--sage-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        margin: 0 auto 20px;
+        border: 2px solid var(--sage-soft);
       }
       .mempelai-card h3 {
-        font-family: "Dancing Script", cursive;
-        font-size: 2.5rem;
-        color: #8c584c;
-        margin-bottom: 10px;
+        font-family: "Playfair Display", serif;
+        font-size: 1.9rem;
+        color: var(--sage-dark);
+        margin-bottom: 8px;
       }
       .mempelai-card p.ig-link {
-        font-family: "Montserrat", sans-serif;
         font-size: 0.85rem;
-        color: #c97a61;
-        margin-bottom: 15px;
+        color: var(--sage-primary);
+        font-weight: 600;
+        margin-bottom: 12px;
+      }
+      .mempelai-card p.parents {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+      }
+      .ampersand-sign {
+        font-family: "Italianno", cursive;
+        font-size: 4.5rem;
+        color: var(--sage-light);
+        line-height: 1;
       }
 
-      /* LOVE STORY SECTION */
+      /* ========================================================
+         LOVE STORY SECTION
+         ======================================================== */
       .story-card {
-        background: #ffffff;
-        border-radius: 15px;
-        padding: 35px;
+        background: var(--cream-card);
+        border-radius: 24px;
+        padding: 35px 30px;
         margin-bottom: 25px;
-        border: 1px solid #f2e6db;
+        border: 1px solid var(--card-border);
         text-align: left;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+        box-shadow: var(--card-shadow);
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+      }
+      .story-card:hover {
+        transform: translateY(-4px);
+      }
+      .story-card::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 5px;
+        background: var(--sage-primary);
       }
       .story-card h4 {
-        font-family: "Dancing Script", cursive;
-        font-size: 1.8rem;
-        color: #8c584c;
-        margin-bottom: 10px;
+        font-family: "Playfair Display", serif;
+        font-size: 1.4rem;
+        color: var(--sage-dark);
+        margin-bottom: 8px;
+      }
+      .story-card p {
+        font-size: 0.95rem;
+        color: var(--text-muted);
       }
 
-      /* TIMELINE ACARA - Style Terinspirasi Foto tapi Lebih Mewah */
+      /* ========================================================
+         TIMELINE ACARA (CLEAN SAGE CHIPS)
+         ======================================================== */
       .timeline {
         position: relative;
-        max-width: 600px;
+        max-width: 650px;
         margin: 0 auto;
         padding: 20px 0;
         text-align: left;
@@ -209,7 +366,7 @@
         content: "";
         position: absolute;
         width: 2px;
-        background-color: #c97a61;
+        background: linear-gradient(180deg, var(--sage-soft), var(--sage-primary), var(--sage-soft));
         top: 0;
         bottom: 0;
         left: 20px;
@@ -221,9 +378,8 @@
         }
       }
       .timeline-container {
-        padding: 10px 30px;
+        padding: 12px 30px;
         position: relative;
-        background-color: inherit;
         width: 100%;
       }
       @media (min-width: 768px) {
@@ -244,12 +400,13 @@
         width: 16px;
         height: 16px;
         right: -17px;
-        background-color: #faf6f0;
-        border: 3px solid #8c584c;
-        top: 15px;
+        background-color: var(--cream-bg);
+        border: 3.5px solid var(--sage-primary);
+        top: 24px;
         border-radius: 50%;
         z-index: 1;
         left: 13px;
+        box-shadow: 0 0 0 4px rgba(148, 180, 163, 0.25);
       }
       @media (min-width: 768px) {
         .timeline-container-left::after {
@@ -261,216 +418,294 @@
         }
       }
       .timeline-content {
-        padding: 20px;
-        background-color: white;
+        padding: 24px;
+        background-color: var(--cream-card);
         position: relative;
-        border-radius: 8px;
-        border: 1px solid #f2e6db;
-        box-shadow: 0 5px 15px rgba(140, 88, 76, 0.03);
+        border-radius: 20px;
+        border: 1px solid var(--card-border);
+        box-shadow: var(--card-shadow);
+        transition: transform 0.3s;
+      }
+      .timeline-content:hover {
+        transform: translateY(-4px);
       }
       .timeline-content h3 {
-        font-family: "Dancing Script", cursive;
-        font-size: 1.8rem;
-        color: #8c584c;
-        margin-bottom: 5px;
+        font-family: "Playfair Display", serif;
+        font-size: 1.45rem;
+        color: var(--sage-dark);
+        margin-bottom: 6px;
       }
       .timeline-content .time {
-        font-family: "Montserrat", sans-serif;
-        font-size: 0.85rem;
-        font-weight: 600;
-        color: #c97a61;
-        margin-bottom: 10px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: var(--sage-primary);
+        letter-spacing: 1px;
+        margin-bottom: 8px;
         display: block;
+        text-transform: uppercase;
+      }
+      .timeline-content p {
+        font-size: 0.9rem;
+        color: var(--text-muted);
       }
 
-      /* MAP SECTION */
+      /* ========================================================
+         MAP / LOKASI
+         ======================================================== */
+      .map-shell {
+        background: var(--cream-card);
+        border-radius: 28px;
+        padding: 24px;
+        border: 1px solid var(--card-border);
+        box-shadow: var(--card-shadow);
+      }
       .map-frame {
         width: 100%;
-        height: 350px;
+        height: 360px;
         border: none;
-        border-radius: 12px;
-        margin-bottom: 25px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        border-radius: 18px;
+        margin-bottom: 22px;
       }
       .btn-navigasi {
         display: inline-flex;
         align-items: center;
         gap: 10px;
-        background-color: #8c584c;
+        background: linear-gradient(135deg, var(--sage-primary), var(--sage-deep));
         color: white;
         text-decoration: none;
-        padding: 12px 30px;
-        font-family: "Montserrat", sans-serif;
+        padding: 13px 34px;
         font-size: 0.85rem;
-        font-weight: 600;
-        border-radius: 30px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        border-radius: 50px;
         transition: all 0.3s;
+        box-shadow: 0 8px 25px rgba(61, 88, 75, 0.25);
       }
       .btn-navigasi:hover {
-        background-color: #c97a61;
-        transform: translateY(-2px);
+        transform: translateY(-3px);
+        box-shadow: 0 12px 30px rgba(61, 88, 75, 0.35);
+        color: #ffffff;
       }
 
-      /* WEDDING GIFT / AMPLOP DIGITAL */
+      /* ========================================================
+         WEDDING GIFT / AMPLOP DIGITAL
+         ======================================================== */
       .gift-box {
-        background: #ffffff;
-        padding: 35px;
-        border-radius: 15px;
-        border: 1px solid #f2e6db;
-        margin-bottom: 25px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+        background: var(--cream-card);
+        padding: 40px 30px;
+        border-radius: 28px;
+        border: 1px solid var(--card-border);
+        box-shadow: var(--card-shadow);
+      }
+      .gift-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-top: 20px;
+      }
+      @media (min-width: 600px) {
+        .gift-grid {
+          grid-template-columns: 1fr 1fr;
+        }
       }
       .gift-card {
-        background: #fdfaf7;
-        padding: 20px;
-        border-radius: 8px;
-        border: 1px solid #f2e6db;
-        margin: 15px 0;
+        background: var(--sage-mist);
+        padding: 24px;
+        border-radius: 20px;
+        border: 1px solid rgba(148, 180, 163, 0.3);
         display: flex;
         flex-direction: column;
         align-items: center;
       }
       .gift-card h5 {
         font-size: 1.1rem;
-        color: #4a3e3d;
-        margin-bottom: 5px;
+        color: var(--sage-dark);
+        margin-bottom: 6px;
       }
       .gift-card p {
-        font-family: "Montserrat", sans-serif;
-        font-size: 1rem;
-        font-weight: 600;
-        color: #c97a61;
+        font-family: monospace;
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--sage-deep);
         margin-bottom: 12px;
       }
       .btn-salin {
-        background-color: #c97a61;
+        background: var(--sage-primary);
         color: white;
         border: none;
-        padding: 8px 18px;
-        font-family: "Montserrat", sans-serif;
+        padding: 9px 22px;
         font-size: 0.75rem;
-        font-weight: 600;
-        border-radius: 20px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        border-radius: 30px;
         cursor: pointer;
         transition: all 0.2s;
       }
       .btn-salin:hover {
-        background-color: #8c584c;
+        background: var(--sage-deep);
       }
 
-      /* RSVP & LIVE ucapan */
+      /* ========================================================
+         RSVP & WISHES WALL
+         ======================================================== */
       .rsvp-card {
-        background: #ffffff;
-        padding: 40px 30px;
-        border-radius: 15px;
-        border: 1px solid #f2e6db;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        background: var(--cream-card);
+        padding: 45px 35px;
+        border-radius: 28px;
+        border: 1px solid var(--card-border);
+        box-shadow: var(--card-shadow);
       }
-      .rsvp-card input, .rsvp-card textarea, .rsvp-card select {
+      .rsvp-card input,
+      .rsvp-card textarea,
+      .rsvp-card select {
         width: 100%;
-        padding: 12px 15px;
-        border-radius: 8px;
-        border: 1px solid #e8dfd8;
+        padding: 14px 18px;
+        border-radius: 14px;
+        border: 1.5px solid rgba(148, 180, 163, 0.4);
         font-family: inherit;
-        background-color: #fdfaf7;
+        background-color: var(--cream-bg);
         margin-bottom: 20px;
         outline: none;
+        color: var(--text-primary);
+        transition: border 0.3s;
       }
-      .rsvp-card input:focus, .rsvp-card textarea:focus {
-        border-color: #c97a61;
+      .rsvp-card input:focus,
+      .rsvp-card textarea:focus,
+      .rsvp-card select:focus {
+        border-color: var(--sage-primary);
+        background: #ffffff;
+      }
+      .btn-submit-rsvp {
+        width: 100%;
+        background: linear-gradient(135deg, var(--sage-primary), var(--sage-deep));
+        color: white;
+        border: none;
+        padding: 15px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s;
+        box-shadow: 0 8px 25px rgba(61, 88, 75, 0.2);
+      }
+      .btn-submit-rsvp:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 30px rgba(61, 88, 75, 0.35);
       }
 
-      /* GUESTBOOK / WISHES WALL */
+      /* Dinding Doa / Buku Tamu */
       .wishes-wall {
-        background: #fcf9f5;
-        border-radius: 12px;
-        padding: 25px;
-        max-height: 350px;
+        background: var(--sage-mist);
+        border-radius: 20px;
+        padding: 24px;
+        max-height: 380px;
         overflow-y: auto;
         text-align: left;
-        border: 1px solid #f2e6db;
-        margin-top: 30px;
+        border: 1px solid var(--card-border);
+        margin-top: 35px;
       }
       .wish-item {
         background: #ffffff;
-        padding: 15px;
-        border-radius: 8px;
-        margin-bottom: 15px;
-        border: 1px solid #f2e6db;
-        box-shadow: 0 3px 8px rgba(0,0,0,0.01);
+        padding: 16px 20px;
+        border-radius: 16px;
+        margin-bottom: 14px;
+        border: 1px solid rgba(148, 180, 163, 0.25);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
       }
       .wish-item strong {
-        font-family: "Montserrat", sans-serif;
-        font-size: 0.9rem;
-        color: #8c584c;
+        font-size: 0.95rem;
+        color: var(--sage-dark);
       }
       .wish-item .badge {
-        font-family: "Montserrat", sans-serif;
         font-size: 0.7rem;
-        padding: 3px 8px;
+        padding: 3px 10px;
         border-radius: 12px;
         margin-left: 8px;
-        font-weight: bold;
+        font-weight: 700;
       }
-      .badge-yes { background-color: #e2f0d9; color: #385723; }
-      .badge-no { background-color: #fce4d6; color: #c65911; }
+      .badge-yes {
+        background-color: #d8eadf;
+        color: #245838;
+      }
+      .badge-no {
+        background-color: #fae4df;
+        color: #8c3f30;
+      }
       .wish-item p {
-        font-size: 1rem;
-        margin-top: 5px;
-        color: #5c504e;
+        font-size: 0.95rem;
+        margin-top: 6px;
+        color: var(--text-muted);
       }
 
-      /* Audio Control */
+      /* Floating Audio Player */
       .music-controller {
         position: fixed;
-        bottom: 30px;
-        right: 30px;
+        bottom: 25px;
+        right: 25px;
         z-index: 1000;
       }
       .music-btn {
-        background-color: #8c584c;
+        background: linear-gradient(135deg, var(--sage-primary), var(--sage-deep));
         color: white;
-        border: none;
-        width: 50px;
-        height: 50px;
+        border: 2px solid #ffffff;
+        width: 52px;
+        height: 52px;
         border-radius: 50%;
         cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.2rem;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        transition: all 0.3s ease;
+        font-size: 1.25rem;
+        box-shadow: 0 6px 20px rgba(36, 54, 45, 0.35);
+        transition: transform 0.3s ease;
+      }
+      .music-btn:hover {
+        transform: scale(1.1);
       }
 
       /* Footer */
       footer {
-        background-color: #4a3e3d;
-        color: #faf6f0;
-        padding: 50px 20px;
+        background-color: var(--sage-dark);
+        color: var(--sage-mist);
+        padding: 60px 20px;
         font-size: 0.9rem;
+      }
+      footer h2 {
+        font-family: "Italianno", cursive;
+        font-size: 4rem;
+        color: var(--sage-soft);
+        font-weight: 400;
+        margin-bottom: 5px;
+      }
+      footer p {
+        margin-bottom: 6px;
       }
     </style>
   </head>
   <body>
-
     <!-- Splash Gate Overlay -->
     <div id="splashGate" class="splash-gate">
-      <h3>The Wedding of</h3>
-      <h1>Justin & Sisca</h1>
-      <div class="guest-box">
-        <p>Kepada Yth. Bapak/Ibu/Saudara/i</p>
-        <h4 id="guestName">Tamu Undangan</h4>
+      <div class="splash-card">
+        <span class="gate-tag">The Wedding Celebration</span>
+        <h1>Justin & Sisca</h1>
+        <div class="guest-box">
+          <p>Kepada Yth. Bapak/Ibu/Saudara/i</p>
+          <h4 id="guestName">Tamu Undangan</h4>
+        </div>
+        <button class="btn-sage" onclick="openInvitation()">
+          <i class="fa-solid fa-envelope-open-text"></i> Buka Undangan
+        </button>
       </div>
-      <button class="btn-open" onclick="openInvitation()">
-        <i class="fa-solid fa-envelope-open-text"></i> Buka Undangan
-      </button>
     </div>
 
     <!-- Floating Audio Control -->
     <div class="music-controller">
       <button class="music-btn" id="audioBtn" onclick="toggleAudio()">
-        <i class="fa-solid fa-music" id="musicIcon"></i>
+        <i class="fa-solid fa-compact-disc fa-spin" id="musicIcon"></i>
       </button>
       <audio id="bgMusic" loop>
         <source src="La Maritza (Piano Cover) - Sylvie Vartan.mp3" type="audio/mpeg" />
@@ -481,48 +716,52 @@
     <header class="hero">
       <h2>The Wedding Celebration</h2>
       <h1>Justin & Sisca</h1>
-      <p style="font-family: 'Montserrat', sans-serif; font-size: 0.9rem; letter-spacing: 5px; margin-top: 20px;">12 . 12 . 2026</p>
+      <span class="hero-date">SABTU, 12 DESEMBER 2026</span>
     </header>
 
     <!-- Mempelai Section -->
-    <section id="mempelai">
+    <section id="mempelai" class="reveal">
       <h2 class="section-title">Mempelai</h2>
-      <p class="sub-title">Dengan mengucap syukur kepada Tuhan YME</p>
+      <p class="sub-title">Dengan Mengucap Syukur Kepada Tuhan YME</p>
 
-      <div class="mempelai-card">
-        <h3>Justin Aditama, S.T.</h3>
-        <p class="ig-link"><i class="fa-brands fa-instagram"></i> @justin.aditama</p>
-        <p>Putra dari Bapak Hardi Aditama & Ibu Elina Aditama</p>
-      </div>
+      <div class="couple-wrapper">
+        <div class="mempelai-card">
+          <div class="mempelai-avatar"><i class="fa-solid fa-feather-pointed"></i></div>
+          <h3>Justin Aditama, S.T.</h3>
+          <p class="ig-link"><i class="fa-brands fa-instagram"></i> @justin.aditama</p>
+          <p class="parents">Putra dari Pasangan:<br /><strong>Bapak Hardi Aditama & Ibu Elina Aditama</strong></p>
+        </div>
 
-      <div style="font-family: 'Dancing Script', cursive; font-size: 3rem; color: #8c584c; margin: 20px 0;">&</div>
+        <div class="ampersand-sign">&</div>
 
-      <div class="mempelai-card">
-        <h3>Sisca Natalia, S.Kom.</h3>
-        <p class="ig-link"><i class="fa-brands fa-instagram"></i> @sisca.natalia</p>
-        <p>Putri dari Bapak Roy Natalia & Ibu Cindy Natalia</p>
+        <div class="mempelai-card">
+          <div class="mempelai-avatar"><i class="fa-solid fa-gem"></i></div>
+          <h3>Sisca Natalia, S.Kom.</h3>
+          <p class="ig-link"><i class="fa-brands fa-instagram"></i> @sisca.natalia</p>
+          <p class="parents">Putri dari Pasangan:<br /><strong>Bapak Roy Natalia & Ibu Cindy Natalia</strong></p>
+        </div>
       </div>
     </section>
 
     <!-- Love Story Section -->
-    <section id="love-story" style="background-color: #fdfaf7;">
-      <h2 class="section-title">Love Story</h2>
+    <section id="love-story" class="reveal">
+      <h2 class="section-title">Kisah Cinta</h2>
       <p class="sub-title">Bagaimana Kami Memulai Perjalanan Ini</p>
 
       <div class="story-card">
         <h4>Pertama Bertemu (2020)</h4>
-        <p>Kami pertama kali dipertemukan di bangku universitas dalam sebuah projek organisasi kampus. Percakapan pertama yang sederhana lambat laun berbuah menjadi kedekatan emosional.</p>
+        <p>Kami pertama kali dipertemukan di bangku universitas dalam sebuah kegiatan organisasi kampus. Percakapan pertama yang sederhana lambat laun berbuah menjadi kedekatan emosional yang hangat dan tulus.</p>
       </div>
       <div class="story-card">
         <h4>Menjalin Komitmen (2022)</h4>
-        <p>Setelah sekian waktu berbagi cerita, tawa, dan tangis, kami memutuskan untuk saling berkomitmen menjalani hubungan yang lebih dewasa dan serius demi masa depan bersama.</p>
+        <p>Setelah sekian waktu berbagi cerita, tawa, dan suka duka bersama, kami memutuskan untuk saling berkomitmen menjalani hubungan yang lebih dewasa demi membangun masa depan yang harmonis.</p>
       </div>
     </section>
 
     <!-- Timeline Susunan Acara -->
-    <section id="acara">
+    <section id="acara" class="reveal">
       <h2 class="section-title">Susunan Acara</h2>
-      <p class="sub-title">Hari Bahagia Kami</p>
+      <p class="sub-title">Rangkaian Hari Bahagia Kami</p>
 
       <div class="timeline">
         <div class="timeline-container timeline-container-left">
@@ -536,85 +775,91 @@
           <div class="timeline-content">
             <span class="time"><i class="fa-regular fa-clock"></i> 10:00 WIB</span>
             <h3>Pemberkatan / Akad</h3>
-            <p>Pengikatan ikatan janji suci pernikahan secara sah di hadapan Tuhan.</p>
+            <p>Pengikatan janji suci pernikahan secara sah dan khidmat di hadapan Tuhan.</p>
           </div>
         </div>
         <div class="timeline-container timeline-container-left">
           <div class="timeline-content">
             <span class="time"><i class="fa-regular fa-clock"></i> 11:30 WIB</span>
             <h3>Resepsi Pernikahan</h3>
-            <p>Perayaan syukuran bersama kerabat, sahabat, serta kolega tercinta.</p>
+            <p>Perayaan syukuran dan ramah tamah bersama kerabat serta sahabat tercinta.</p>
           </div>
         </div>
         <div class="timeline-container timeline-container-right">
           <div class="timeline-content">
             <span class="time"><i class="fa-regular fa-clock"></i> 14:00 WIB</span>
             <h3>Acara Penutup</h3>
-            <p>Foto bersama dan ramah tamah penghujung perayaan bahagia.</p>
+            <p>Sesi foto bersama dan penutupan perayaan bahagia.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Denah Lokasi -->
-    <section id="lokasi" style="background-color: #fdfaf7;">
+    <section id="lokasi" class="reveal">
       <h2 class="section-title">Lokasi Acara</h2>
-      <p class="sub-title">Kehadiran Anda adalah kebahagiaan kami</p>
+      <p class="sub-title">Kehadiran & Doa Restu Anda Adalah Kebahagiaan Kami</p>
 
-      <iframe 
-        class="map-frame" 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.666466144368!2d106.82496417585802!3d-6.175392393811818!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5d2db242733%3A0x48e42f9e4e68e4c!2sMonumen%20Nasional!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid">
-      </iframe>
+      <div class="map-shell">
+        <iframe
+          class="map-frame"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.666466144368!2d106.82496417585802!3d-6.175392393811818!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5d2db242733%3A0x48e42f9e4e68e4c!2sMonumen%20Nasional!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid"
+          loading="lazy"
+        >
+        </iframe>
 
-      <a href="https://maps.app.goo.gl/uX3f59oE66bSDoF4A" target="_blank" class="btn-navigasi">
-        <i class="fa-solid fa-diamond-turn-right"></i> Petunjuk Rute Navigasi
-      </a>
+        <a href="https://maps.app.goo.gl/uX3f59oE66bSDoF4A" target="_blank" class="btn-navigasi">
+          <i class="fa-solid fa-location-arrow"></i> Petunjuk Rute Google Maps
+        </a>
+      </div>
     </section>
 
     <!-- Amplop Digital / Hadiah -->
-    <section id="hadiah">
-      <h2 class="section-title">Kirim Hadiah</h2>
-      <p class="sub-title">Bagi yang ingin mengirimkan ucapan syukur digital</p>
+    <section id="hadiah" class="reveal">
+      <h2 class="section-title">Tanda Kasih</h2>
+      <p class="sub-title">Bagi Bapak/Ibu/Saudara/i yang Ingin Mengirimkan Hadiah Digital</p>
 
       <div class="gift-box">
-        <div class="gift-card">
-          <h5>Bank Central Asia (BCA)</h5>
-          <p id="rekening1">1234567890</p>
-          <button class="btn-salin" onclick="copyToClipboard('rekening1')">Salin Nomor Rekening</button>
-        </div>
-        <div class="gift-card">
-          <h5>Bank Mandiri</h5>
-          <p id="rekening2">9876543210</p>
-          <button class="btn-salin" onclick="copyToClipboard('rekening2')">Salin Nomor Rekening</button>
+        <div class="gift-grid">
+          <div class="gift-card">
+            <h5>Bank Central Asia (BCA)</h5>
+            <p id="rekening1">1234567890</p>
+            <button class="btn-salin" onclick="copyToClipboard('rekening1')">Salin Rekening</button>
+          </div>
+          <div class="gift-card">
+            <h5>Bank Mandiri</h5>
+            <p id="rekening2">9876543210</p>
+            <button class="btn-salin" onclick="copyToClipboard('rekening2')">Salin Rekening</button>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- RSVP & LIVE Guestbook Wall -->
-    <section id="rsvp" style="background-color: #fdfaf7;">
+    <section id="rsvp" class="reveal">
       <h2 class="section-title">Konfirmasi & Ucapan</h2>
-      <p class="sub-title">Kirimkan restu doa terbaik Anda untuk kami</p>
+      <p class="sub-title">Sampaikan Doa Restu Terbaik Anda</p>
 
       <div class="rsvp-card">
         <form id="rsvpForm">
-          <input type="text" id="nameInput" required placeholder="Tulis nama lengkap Anda" />
+          <input type="text" id="nameInput" required placeholder="Tuliskan nama lengkap Anda" />
           <select id="presenceInput">
             <option value="Hadir">Saya akan Hadir</option>
-            <option value="Tidak Hadir">Mohon maaf, Tidak Bisa Hadir</option>
+            <option value="Tidak Hadir">Mohon Maaf, Belum Bisa Hadir</option>
           </select>
-          <textarea id="wishInput" rows="4" required placeholder="Tulis doa restu / ucapan selamat untuk kedua mempelai..."></textarea>
-          <button type="submit" class="btn-open" style="width: 100%;">Kirim Doa Restu</button>
+          <textarea id="wishInput" rows="4" required placeholder="Tuliskan doa restu & ucapan selamat Anda di sini..."></textarea>
+          <button type="submit" class="btn-submit-rsvp">Kirim Doa Restu</button>
         </form>
 
         <!-- Dynamic Wishes Wall (Buku Tamu Real-time) -->
         <div class="wishes-wall" id="wishesWall">
           <div class="wish-item">
             <strong>Budi Prasetyo</strong> <span class="badge badge-yes">Hadir</span>
-            <p>Selamat menempuh hidup baru untuk Justin dan Sisca! Semoga selalu rukun, bahagia selamanya, dan lancar rezeki amin!</p>
+            <p>Selamat menempuh hidup baru untuk Justin dan Sisca! Semoga senantiasa rukun, bahagia selamanya, dan dipenuhi berkah cinta.</p>
           </div>
           <div class="wish-item">
             <strong>Dewi Handayani</strong> <span class="badge badge-no">Tidak Hadir</span>
-            <p>Selamat ya Sisca! Sangat disayangkan saya tidak bisa hadir langsung karena dinas luar kota, tapi doa terbaik selalu menyertai kalian berdua.</p>
+            <p>Selamat berbahagia Sisca & Justin! Sangat disayangkan berhalangan hadir langsung, namun doa terbaik selalu menyertai perjalanan baru kalian.</p>
           </div>
         </div>
       </div>
@@ -622,23 +867,24 @@
 
     <!-- Footer -->
     <footer>
-      <p>Justin & Sisca</p>
-      <p>&copy; 2026 KedaiKoding. All Rights Reserved.</p>
+      <h2>Justin & Sisca</h2>
+      <p>&copy; 2026 Justin & Sisca Wedding. All Rights Reserved.</p>
+      <p style="font-size: 0.8rem; color: var(--sage-soft)">Made with ♥ by KedaiKoding</p>
     </footer>
 
     <script>
       // Ambil nama tamu otomatis dari link URL (?to=Nama+Tamu)
       const urlParams = new URLSearchParams(window.location.search);
-      const guestName = urlParams.get('to');
+      const guestName = urlParams.get("to");
       if (guestName) {
-        document.getElementById('guestName').innerText = guestName;
+        document.getElementById("guestName").innerText = guestName;
       }
 
       // Membuka Undangan & Menyalakan Musik
       function openInvitation() {
-        document.getElementById('splashGate').classList.add('fade-out');
+        document.getElementById("splashGate").classList.add("fade-out");
         const audio = document.getElementById("bgMusic");
-        audio.play();
+        audio.play().catch((err) => console.log("Autoplay dicegah browser:", err));
         document.getElementById("musicIcon").className = "fa-solid fa-compact-disc fa-spin";
       }
 
@@ -656,6 +902,20 @@
         }
       }
 
+      // Animasi Slide Masuk Cantik (Intersection Observer)
+      const reveals = document.querySelectorAll(".reveal");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("active");
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      reveals.forEach((el) => observer.observe(el));
+
       // Salin Rekening ke Clipboard
       function copyToClipboard(id) {
         const textToCopy = document.getElementById(id).innerText;
@@ -667,12 +927,11 @@
       // Guestbook Ucapan Real-Time
       document.getElementById("rsvpForm").addEventListener("submit", function (e) {
         e.preventDefault();
-        
+
         const nameInput = document.getElementById("nameInput").value;
         const presenceInput = document.getElementById("presenceInput").value;
         const wishInput = document.getElementById("wishInput").value;
 
-        // Buat Template Item Baru
         const wishWall = document.getElementById("wishesWall");
         const newItem = document.createElement("div");
         newItem.classList.add("wish-item");
@@ -684,12 +943,9 @@
           <p>${wishInput}</p>
         `;
 
-        // Taruh di bagian atas dinding ucapan
         wishWall.insertBefore(newItem, wishWall.firstChild);
-
-        // Reset Formulir
         document.getElementById("rsvpForm").reset();
-        alert("Terima kasih! Ucapan selamat Anda telah terkirim dan terpajang.");
+        alert("Terima kasih! Doa restu Anda telah berhasil dikirimkan.");
       });
     </script>
   </body>
